@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:padding="20dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+<!--<ScrollView-->
+<!--    android:layout_width="fill_parent"-->
+<!--    android:layout_height="fill_parent">-->
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Report Disaster"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lab_for_PI"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/tv1"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:text="Are you reporting an Upcoming Disaster or Previous Disaster?"
+            />
+        <Spinner
+            android:id="@+id/spinnerPI"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lab_for_PI"
+            android:layout_marginTop="10dp"
+            android:tooltipText="Reporting Previous Disaster or Incoming Disaster ?"
+            android:entries="@array/spinner_items_prev_inc_type"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lab_for_bt_pick"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/spinnerPI"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:text="Click the below button to select the location of disaster"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_picker"
+            android:text="Pick Location"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/lab_for_bt_pick"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_show"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            android:layout_below="@id/bt_picker"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lab_for_sD"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/text_show"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:text="Select the Type of Disaster"
+            />
+        <Spinner
+            android:id="@+id/spinnerD"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lab_for_sD"
+            android:layout_marginTop="10dp"
+            android:tooltipText="Select Type of Disaster"
+            android:entries="@array/spinner_items_disaster_type"
+            android:gravity="center_horizontal" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lab_for_sS"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/spinnerD"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:text="Click the below button to select the location of disaster"
+            />
+        <Spinner
+            android:id="@+id/spinnerS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lab_for_sS"
+            android:tooltipText="Select Type of Severity"
+            android:entries="@array/spinner_items_severity_type"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lab_for_sT"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/spinnerS"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:typeface="normal"
+            android:text="Select the Time Horizon"
+            />
+        <Spinner
+            android:id="@+id/spinnerT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lab_for_sT"
+            android:visibility="gone"
+            android:tooltipText="Select Time Horizon"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sub_But"
+            android:text="REPORT"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/spinnerT"
+            android:layout_marginTop="10dp"
+            />
+    </RelativeLayout>
+</ScrollView>
+<!--</ScrollView>-->
+<!--    </RelativeLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
