@@ -48,16 +48,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        eSB.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                Intent i = new Intent(MainActivity.this , GMaps1.class);
-                startActivity(i);
-                finish();
-                return false;
-            }
-        });
-
         eCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,12 +66,9 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            startActivity(new Intent(MainActivity.this,GMaps1.class));
+            startActivity(new Intent(MainActivity.this,MainActivity2.class));
             finish();
             Toast.makeText(this, "Welcome Back", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this, "Sign In to Report Disasters", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -105,10 +92,6 @@ class BActivity extends AppCompatActivity {
             case R.id.about_app:
                 Toast.makeText(this, "You can Report Disasters using the App", Toast.LENGTH_SHORT).show();
                 return (true);
-            case R.id.exit_app:
-                finish();
-                System.exit(0);
-                return (true);
             case R.id.sign_out:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(this, MainActivity.class));
@@ -116,8 +99,12 @@ class BActivity extends AppCompatActivity {
             case R.id.reported_eve:
                 startActivity(new Intent(this, View_DEve.class));
                 return (true);
+          /*  case R.id.exit_app:
+                finish();
+                System.exit(0);
+                return (true);
             case R.id.settings_user:
-                startActivity(new Intent(this, SettingsActivity.class));
+                startActivity(new Intent(this, SettingsActivity.class));*/
         }
         return (super.onOptionsItemSelected(item));
     }

@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -88,7 +89,10 @@ public class RegisterActivity extends AppCompatActivity {
                 em = emE.getText().toString();
                 ep1= epE1.getText().toString();
                 ep2= epE2.getText().toString();
-                if(!(ep1.trim().equals(ep2.trim()))){
+                if( !(em.length()>0 && ep1.length()>0 && ep2.length()>0) ){
+                    Toast.makeText(RegisterActivity.this, "All the fields are mandatory. Kindly Enter the details properly.", Toast.LENGTH_SHORT).show();
+                }
+                else if(!(ep1.trim().equals(ep2.trim()))){
                     Toast.makeText(RegisterActivity.this, "Password and Confirm Password Does not match", Toast.LENGTH_SHORT).show();
                 }else{
 
@@ -100,12 +104,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
 
                                         // Sign in success, update UI with the signed-in user's information
-                                        Toast.makeText(RegisterActivity.this, "Authentication Successful. User Registered", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this, "User Registered Successfully. Kindly Login to Continue.", Toast.LENGTH_SHORT).show();
                                         FirebaseUser firebaseUser=mAuth.getCurrentUser();
-                                        firebaseUser.getEmail();
                                         String UserId = firebaseUser.getUid();
-
-                                        SharedPreferences sharedPreferences = getSharedPreferences("UP",MODE_PRIVATE);
+/*                                        SharedPreferences sharedPreferences = getSharedPreferences("UP",MODE_PRIVATE);
                                         SharedPreferences.Editor myEdit = sharedPreferences.edit();
                                         int t11,t12;
                                         switch (sp1){
@@ -118,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         t12=sp2;
                                         myEdit.putInt("size",t11).commit();
                                         myEdit.putInt("color",t12).commit();
-                                        myEdit.apply();
+                                        myEdit.apply();*/
 
 
                                         DBReport d1= new DBReport(UserId,sp1,sp2);
@@ -127,7 +129,6 @@ public class RegisterActivity extends AppCompatActivity {
 //                                        mDatabase.child("UserDet").child(firebaseUser.getUid()).setValue(d2)
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Toast.makeText(RegisterActivity.this, "Successful", Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
@@ -135,12 +136,16 @@ public class RegisterActivity extends AppCompatActivity {
                                                 Toast.makeText(RegisterActivity.this, "Something Went Wrong , Try Again Later", Toast.LENGTH_SHORT).show();
                                             }
                                         });
-                                        startActivity(new Intent(RegisterActivity.this,GMaps1.class));
+                                        mAuth.signOut();
+                                        startActivity(new Intent(RegisterActivity.this,emailH.class));
                                         finish();
 
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else
+                                        {
+                                        if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                                            Toast.makeText(RegisterActivity.this, "User with this Email Address Already Exits", Toast.LENGTH_SHORT).show();}
+                                        else{Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();}
 
                                     }
                                 }

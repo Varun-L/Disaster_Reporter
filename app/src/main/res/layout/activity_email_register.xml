@@ -12,15 +12,23 @@
         android:gravity="center">
 
 
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/i1add"
+            android:src="@drawable/add"
+            android:layout_centerHorizontal="true"
+            />
         <EditText
             android:id="@+id/fieldEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
             android:hint="@string/hint_email"
             android:ems="10"
-
+            android:layout_below="@id/i1add"
             android:layout_centerHorizontal="true"
             android:inputType="textEmailAddress"
             />

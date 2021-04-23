@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DMI">
+        <activity android:name=".MainActivity2"></activity>
         <activity android:name=".SettingsActivity" />
         <activity android:name=".View_DEve" />
         <activity android:name=".GMaps1" />
-        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,9 +27,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCQ2HZwAfb-o_CmU9zWkM6fCQRuQQFqVQw" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

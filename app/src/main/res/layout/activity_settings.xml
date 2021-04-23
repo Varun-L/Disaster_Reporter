@@ -6,23 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity"
     android:gravity="center"
+    android:id="@+id/rl_about_app"
     >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/label_for_textSize_spinner"
-        android:text="@string/choose_the_text_size"
-        android:gravity="center"
+        android:id="@+id/label_for_about_app"
+        android:text="@string/about_app_screen"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:gravity="left"
+
          />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner_textSizeSelectApp"
-        android:layout_below="@id/label_for_textSize_spinner"
-        android:entries="@array/spinner_choose_text_size"
-        android:layout_marginTop="15dp"
-        android:textAlignment="center"
-        android:gravity="center_horizontal" />
+
 
 </RelativeLayout>

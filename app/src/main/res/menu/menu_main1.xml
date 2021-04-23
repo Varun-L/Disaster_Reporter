@@ -7,15 +7,9 @@
         </item>
 
         <item
-            android:id="@+id/reported_eve"   android:title="Reported Disasters">
+            android:id="@+id/reported_eve"   android:title="View Reported Disasters">
         </item>
 
-        <item
-            android:id="@+id/settings_user"   android:title="Settings">
-        </item>
-        <item
-            android:id="@+id/exit_app"   android:title="Exit">
-        </item>
 
         <item
             android:id="@+id/sign_out"   android:title="Sign Out">

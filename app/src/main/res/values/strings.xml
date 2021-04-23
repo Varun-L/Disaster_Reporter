@@ -99,6 +99,17 @@
     <string name="multi_factor_signed_out">You are not signed in. To use this sample, first navigate to the Email/Password example to sign in and then return here to enroll in multi-factor auth.</string>
     <string name="choose_the_text_size">Which Text Size do you prefer</string>
     <string name="which_color_do_you_prefer">Which Color do you prefer</string>
+    <string name="about_app_screen">
+        Disaster Reporter Application helps you to report about the Disasters that have happened in the past and warn about the disasters which are likely to occur in future. Users can also View the Reported Disasters.
+
+        <br></br>
+        <br></br>
+        <br></br>
+        Made By
+        I3D Labs
+    </string>
+    <string name="view_reported_disasters_a2">View Reported Disasters</string>
+    <string name="report_a_disaster_a2">Report a Disaster</string>
 
     <string-array name="spinner_items_prev_inc_type">
         <item>Previous Disaster</item>
@@ -134,11 +145,14 @@
     </string-array>
 
     <string-array name="spinner_choose_color">
-        <item>White</item>
-        <item>Blue</item>
-        <item>Black</item>
+        <item> White </item>
+        <item> Blue </item>
         <item> Yellow </item>
         <item> Silver </item>
+        <item> Purple </item>
+        <item> Green </item>
+        <item> Black(Night Mode) </item>
+        <item> Black(Dark Mode) </item>
     </string-array>
 
 </resources>

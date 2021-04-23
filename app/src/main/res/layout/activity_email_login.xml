@@ -9,12 +9,21 @@
     >
 
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/i1add"
+            android:src="@drawable/login"
+            android:layout_centerHorizontal="true"
+            />
         <EditText
             android:id="@+id/fieldEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/i1add"
             android:hint="@string/hint_email"
             android:ems="10"
             android:layout_centerHorizontal="true"

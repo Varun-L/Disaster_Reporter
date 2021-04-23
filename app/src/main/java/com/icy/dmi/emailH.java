@@ -31,6 +31,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class emailH extends AppCompatActivity {
 
     Button eL;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+            if(s.equals("color")){
+                startActivity(new Intent(emailH.this, MainActivity2.class));
+                finish();}
+        }};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +47,10 @@ public class emailH extends AppCompatActivity {
         eL = findViewById(R.id.emailSignInButton);
         getSupportActionBar().setTitle("Login ");
 
-        SharedPreferences sharedPreferences = getSharedPreferences("UP",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
-
+        sharedPreferences = getSharedPreferences("UP",MODE_PRIVATE);
+        sharedPreferences.registerOnSharedPreferenceChangeListener(listener);
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
-
         eL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,45 +61,46 @@ public class emailH extends AppCompatActivity {
                 emE=(EditText)findViewById(R.id.fieldEmail);
                 epE=(EditText) findViewById(R.id.fieldPassword);
                 em = emE.getText().toString();
-                ep=epE.getText().toString();
+                ep=  epE.getText().toString();
+                if(!(em.length()>0 && ep.length()>0)){
+                    Toast.makeText(emailH.this, "Email and Password cannot be Empty.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mAuth.signInWithEmailAndPassword(em, ep)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        setUTSize();
 
-                mAuth.signInWithEmailAndPassword(em, ep)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    setUTSize(myEdit);
-                                    Toast.makeText(emailH.this, "Login Successful.", Toast.LENGTH_SHORT).show();
-
-                                    sharedPreferences.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
-                                        @Override
-                                        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-                                            startActivity(new Intent(emailH.this,GMaps1.class));
-                                            finish();
-                                        }
-                                    });
-
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(emailH.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(emailH.this, "Authentication failed. Try Again",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
-
-
-
-
-
+                            }); }
                 }
         });
 
+
     }
 
-    public void setUTSize(SharedPreferences.Editor myEdit){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getSharedPreferences("UP",MODE_PRIVATE).registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getSharedPreferences("UP",MODE_PRIVATE).registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    public void setUTSize(){
 
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -109,9 +115,7 @@ public class emailH extends AppCompatActivity {
                 }
                 else {
                     int t11,t12;
-
                     DBReport d3= task.getResult().getValue(DBReport.class);
-                    Toast.makeText(emailH.this, task.getResult().getValue().toString(), Toast.LENGTH_SHORT).show();
                     switch (d3.UTSize){
                         case 0: t11=14; break;
                         case 1: t11=17; break;
@@ -120,9 +124,9 @@ public class emailH extends AppCompatActivity {
                         default: t11=18;
                     }
                     t12=d3.UColor;
-                    myEdit.putInt("size",t11).commit();
-                    myEdit.putInt("color",t12).commit();
-                    myEdit.apply();
+                    SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                    myEdit.putInt("size",t11).apply();
+                    myEdit.putInt("color",t12).apply();
 
 
                 }
@@ -130,7 +134,10 @@ public class emailH extends AppCompatActivity {
 
 
 
+
     }
+
+
 
 
 
