@@ -15,4 +15,18 @@
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>
+
+
+
+
+    <color name="user_w">#F5F5F5</color>
+    <color name="user_b">#6666ff</color>
+    <color name="user_y">#ffff80</color>
+    <color name="user_s">#cccccc</color>
+    <color name="user_p">#cc66ff</color>
+    <color name="user_g">#66ff99</color>
+    <color name="user_bn">#42423d</color>
+    <color name="user_bd">#000000</color>
+
+
 </resources>

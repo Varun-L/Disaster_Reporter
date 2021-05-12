@@ -4,70 +4,68 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity2 extends AppCompatActivity {
+public class AboutAppActivity extends AppCompatActivity {
 
     /**
-     * MainActivity2 provides two Buttons ReportDisaster and View Reported Disasters.
-     * According to User Selection he will be redirected to Activities.
+     *
+     * AboutAppActivity - This Activity displays the About Page of the App.
+     * Grabs the Background Color and Text color from shared preferences.
+     * Set TextSize and Populates Menu for other options.
      * */
 
-    Button b1,b2;
+    TextView t1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_settings);
+    t1= findViewById(R.id.label_for_about_app);
 
-        RelativeLayout rl = findViewById(R.id.user_landing_page_a2);
-        b1 = findViewById(R.id.reportDisasterButton);
-        b2=findViewById(R.id.viewReportedDisasterButton);
-
+        getSupportActionBar().setTitle("About App");
 
 
-        TextView[] ta = {};
-        getSupportActionBar().setTitle("Report/View");
+        String st="\t\t About the App :"+
+            "\tDisaster Reporter Application helps you to report about " +
+            "the Disasters that have happened in the past and " +
+            "warn about the disasters which are likely to occur in future." +
+            " Users can also View the Reported Disasters.\n\n\n"+
+            "\t\t\t\t © I3D Labs 2021 ";
+        t1.setText(st);
+        TextView[] ta = {t1};
+        RelativeLayout rl = findViewById(R.id.rl_about_app);
+
+
+
         SharedPreferences sh = getSharedPreferences("UP", MODE_PRIVATE);
         float a2 = (float)sh.getInt("size", 17);
         int map_style_file =sh.getInt("color",0);
         new Helpers11().setColorB(rl,map_style_file,ta);
-        new Helpers11().setButtonBF(b1,map_style_file);
-        new Helpers11().setButtonBF(b2,map_style_file);
-
-        b1.setTextSize(a2);
-        b2.setTextSize(a2);
-
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity2.this,ReportDisasterActivity.class));
-            }
-        });
-
-
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity2.this,View_DEve.class));
-            }
-        });
-
-    TextView t9u = findViewById(R.id.textView6);
-    t9u.setTextSize(a2-3);
-    t9u.setTextColor(Color.parseColor(new Helpers11().getSpinBack(map_style_file)));
+        subSetTextSize(ta,a2);
 
 
     }
+
+    public void subSetTextSize(TextView[] ta,float size){
+
+        ta[0].setTextSize(size);
+       /* for (TextView t1:ta) {
+            t1.setTextSize(size);
+        }*/
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -75,20 +73,18 @@ public class MainActivity2 extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
 
             case R.id.about_app:
-                startActivity(new Intent(MainActivity2.this, AboutAppActivity.class));
-                return(true);
-            case R.id.reported_eve:
-                startActivity(new Intent(MainActivity2.this,View_DEve.class));
+                Toast.makeText(this, "You can Report Disasters using the App", Toast.LENGTH_SHORT).show();
                 return (true);
             case R.id.sign_out:
                 if(FirebaseAuth.getInstance().getCurrentUser()!=null){
                     FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity2.this, MainActivity.class));
+                    startActivity(new Intent(AboutAppActivity.this, MainActivity.class));
                     finish();
                 }
                 else {
@@ -96,7 +92,7 @@ public class MainActivity2 extends AppCompatActivity {
                     SharedPreferences.OnSharedPreferenceChangeListener listener3 = new SharedPreferences.OnSharedPreferenceChangeListener() {
                         @Override
                         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences12, String s) {
-                            startActivity(new Intent(MainActivity2.this, MainActivity.class));
+                            startActivity(new Intent(AboutAppActivity.this, MainActivity.class));
                             finish();
 
                         }
@@ -105,10 +101,11 @@ public class MainActivity2 extends AppCompatActivity {
                     SharedPreferences.Editor myEdit3 = sharedPreferences12.edit();
                     myEdit3.putBoolean("cup_login", false).apply();
                 }
-
+            case R.id.reported_eve:
+                startActivity(new Intent(this, View_DEve.class));
+                return (true);
         }
-
-        return(super.onOptionsItemSelected(item));
+        return (super.onOptionsItemSelected(item));
     }
 
 }

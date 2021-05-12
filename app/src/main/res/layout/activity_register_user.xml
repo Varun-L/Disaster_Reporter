@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_100"
+        android:gravity="center">
+
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:id="@+id/i1add"
+            android:src="@drawable/add"
+            android:layout_centerHorizontal="true"
+            />
+        <EditText
+            android:id="@+id/fieldEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:hint="@string/hint_email"
+            android:ems="10"
+            android:layout_below="@id/i1add"
+            android:layout_centerHorizontal="true"
+            android:inputType="textEmailAddress"
+            />
+
+        <EditText
+            android:id="@+id/fieldPassword1"
+            android:layout_width="wrap_content"
+            android:ems="10"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/hint_password"
+            android:layout_below="@id/fieldEmail"
+            android:layout_centerHorizontal="true"
+            android:inputType="textPassword"
+            />
+        <EditText
+            android:id="@+id/fieldPassword2"
+            android:layout_width="wrap_content"
+            android:ems="10"
+            android:layout_below="@id/fieldPassword1"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/hint_password2"
+            android:inputType="textPassword"
+            android:layout_centerHorizontal="true"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_spinner_text_size"
+            android:layout_below="@id/fieldPassword2"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="10dp"
+            >
+            <TextView
+                android:layout_height="wrap_content"
+                android:id="@+id/label_for_textSize_spinner"
+                android:text="@string/choose_the_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:padding="8dp"
+                />
+            <Spinner
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_textSizeSelectApp"
+                android:entries="@array/spinner_choose_text_size"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:gravity="center_horizontal" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_spinner_color"
+            android:layout_below="@id/ll_spinner_text_size"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_height="wrap_content"
+                android:id="@+id/label_for_color_spinner"
+                android:text="@string/which_color_do_you_prefer"
+                android:layout_width="wrap_content"
+                android:textSize="17sp"
+                />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+                <RadioButton android:id="@+id/radio_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/white"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/radio_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/user_b"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/radio_yellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/user_y"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/radio_silver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/user_s"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/radio_purple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/user_p"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/radio_green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/user_g"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton android:id="@+id/radio_black_n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/user_bn"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/radio_black_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:background="@color/user_bd"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+</HorizontalScrollView>
+
+        </LinearLayout>
+
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/demo_text"
+    android:text="Demo Text"
+    android:layout_below="@id/ll_spinner_color"
+    android:layout_centerHorizontal="true"
+    android:padding="10dp"
+    android:layout_marginTop="15dp"
+    />
+        <Button
+            android:id="@+id/emailCreateAccountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/button_horizontal_margin"
+            android:layout_marginLeft="@dimen/button_horizontal_margin"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@id/demo_text"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/create_account"
+            android:layout_centerHorizontal="true"
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            />
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

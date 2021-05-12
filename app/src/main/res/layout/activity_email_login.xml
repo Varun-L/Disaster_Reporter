@@ -43,9 +43,47 @@
             android:inputType="textPassword"
              />
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp"
+    android:layout_below="@id/fieldPassword"
+    android:id="@+id/sign_in_cup_ll"
+    android:weightSum="2"
+    >
         <Button
             android:id="@+id/emailSignInButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="@dimen/button_horizontal_margin"
+            android:layout_marginRight="@dimen/button_horizontal_margin"
+            android:text="@string/sign_in"
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            />
+
+        <Button
+            android:id="@+id/emailSignInCUPButton"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="@dimen/button_horizontal_margin"
+            android:layout_marginRight="@dimen/button_horizontal_margin"
+            android:text="CUP"
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            />
+
+
+</LinearLayout>
+
+<!--
+        <Button
+            android:id="@+id/emailSignInButton1"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
@@ -54,9 +92,25 @@
             android:layout_marginEnd="@dimen/button_horizontal_margin"
             android:layout_marginRight="@dimen/button_horizontal_margin"
             android:text="@string/sign_in"
-            android:layout_below="@id/fieldPassword"
+            android:layout_below="@id/sign_in_cup_ll"
             android:theme="@style/ThemeOverlay.MyDarkButton"
-             />
+            />
 
+        <Button
+            android:id="@+id/emailSignInCUPButton1"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="@dimen/button_horizontal_margin"
+            android:layout_marginRight="@dimen/button_horizontal_margin"
+            android:text="CUP"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/emailSignInButton"
+            android:theme="@style/ThemeOverlay.MyDarkButton"
+            />
+
+-->
 
 </RelativeLayout>

@@ -31,6 +31,12 @@ import java.util.Map;
 
 public class View_DEve extends AppCompatActivity {
 
+    /**
+     * This Activity is used to View the Reported Disasters.
+     * Collect the Location Latitude and Longitude from the Map and Search for
+     * related collection in FireStore and If any Disaster(s) is reported display them to the user.
+     * */
+
     Button b1;
     TextView t1,tlab2;
     int map_style_file;
@@ -54,6 +60,7 @@ public class View_DEve extends AppCompatActivity {
     map_style_file =sh.getInt("color",0);
     subSetTextSize(ta,a2);
     new Helpers11().setColorB(r1,map_style_file,ta);
+    new Helpers11().setButtonBF(b1,map_style_file);
 
 
         b1.setOnClickListener(new View.OnClickListener() {
